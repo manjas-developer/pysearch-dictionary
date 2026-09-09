@@ -1,0 +1,27 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "pysearch-dictionary"
+version = "0.1.0"
+authors = [
+  { name = "Manjas Anand" }
+]
+description = "Fast offline English-to-Hindi dictionary with automated crowdsourced word logging."
+readme = "README.md"
+requires-python = ">=3.8"
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+    "Topic :: Text Processing :: Linguistic",
+]
+dependencies = []
+
+[project.urls]
+"Homepage" = "https://github.com/YOUR_USERNAME/pysearch-dictionary"
+"Bug Tracker" = "https://github.com/YOUR_USERNAME/pysearch-dictionary/issues"
+
+[tool.setuptools.package-data]
+pysearch_dictionary = ["data.json"]
