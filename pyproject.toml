@@ -23,5 +23,8 @@ dependencies = []
 "Homepage" = "https://github.com/YOUR_USERNAME/pysearch-dictionary"
 "Bug Tracker" = "https://github.com/YOUR_USERNAME/pysearch-dictionary/issues"
 
+[project.scripts]
+pysearch-dictionary = "pysearch_dictionary.core:main"
+
 [tool.setuptools.package-data]
 pysearch_dictionary = ["data.json"]
