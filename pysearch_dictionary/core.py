@@ -1,5 +1,6 @@
 import json
 from pathlib import Path
+import sys
 import threading
 import urllib.request
 
@@ -17,8 +18,8 @@ except Exception:
 
 
 def _log_missing_word(word: str) -> None:
-  """Silently logs an issue to GitHub without blocking the user app 🚀"""
-  if not GITHUB_TOKEN or not GITHUB_REPO or "manjas-developer" in GITHUB_REPO:
+  """Silently logs an issue to GitHub without blocking execution 🚀"""
+  if not GITHUB_TOKEN or not GITHUB_REPO or "YOUR_USERNAME" in GITHUB_REPO:
     return
 
   try:
@@ -45,15 +46,11 @@ def _log_missing_word(word: str) -> None:
     )
     urllib.request.urlopen(req, timeout=2)
   except Exception:
-    pass  # Never disrupt main execution flow 🛡️
+    pass  # Never disrupt user workflow 🛡️
 
 
 def translate(word: str) -> str:
-  """Translates an English word to Hindi.
-
-  Returns the Hindi translation or a fallback message while logging missing
-  words.
-  """
+  """Translates an English word to Hindi 🔍"""
   if not isinstance(word, str):
     return "अमान्य इनपुट (Invalid input)"
 
@@ -67,3 +64,16 @@ def translate(word: str) -> str:
       target=_log_missing_word, args=(cleaned,), daemon=True
   ).start()
   return "शब्द नहीं मिला (Word not found)"
+
+
+def main():
+  """CLI entry point for running directly from terminal 💻✨"""
+  if len(sys.argv) > 1:
+    word = " ".join(sys.argv[1:])
+    print(translate(word))
+  else:
+    print("Usage: pysearch-dictionary <word> 📖")
+
+
+if __name__ == "__main__":
+  main()
