@@ -4,8 +4,8 @@ import threading
 import urllib.request
 
 # ⚙️ Configuration (Set your repo details)
-GITHUB_REPO = "YOUR_USERNAME/pysearch-dictionary"
-GITHUB_TOKEN = ""  # Optional: token for creating automated issue reports
+GITHUB_REPO = "manjas-developer/pysearch-dictionary"
+GITHUB_TOKEN = "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"  # Optional: token for creating automated issue reports
 
 # Load embedded offline dictionary
 DATA_FILE = Path(__file__).parent / "data.json"
@@ -18,7 +18,7 @@ except Exception:
 
 def _log_missing_word(word: str) -> None:
   """Silently logs an issue to GitHub without blocking the user app 🚀"""
-  if not GITHUB_TOKEN or not GITHUB_REPO or "YOUR_USERNAME" in GITHUB_REPO:
+  if not GITHUB_TOKEN or not GITHUB_REPO or "manjas-developer" in GITHUB_REPO:
     return
 
   try:
