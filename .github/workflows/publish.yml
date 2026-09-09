@@ -1,16 +1,16 @@
 name: Publish to PyPI 🚀
 
 on:
-  workflow_dispatch: # 👈 This adds the "Run workflow" button in GitHub Actions! 🔘✨
+  workflow_dispatch: # Allows manual run button 🔘
   release:
     types: [published]
 
 jobs:
-  build-and-publish:
-    name: Build & Publish Package
+  pypi-publish:
+    name: Build and upload to PyPI
     runs-on: ubuntu-latest
     permissions:
-      id-token: write # Needed for modern PyPI Trusted Publishing 🔐
+      id-token: write # Generates short-lived OIDC token 🔑
       contents: read
 
     steps:
@@ -22,17 +22,15 @@ jobs:
         with:
           python-version: "3.11"
 
-      - name: Install build tools 🛠️
+      - name: Install build tool 🛠️
         run: |
           python -m pip install --upgrade pip
           pip install build
 
-      - name: Build package distribution 📦
+      - name: Build package 📦
         run: python -m build
 
-      - name: Publish to PyPI 🌐🚀
+      - name: Publish to PyPI 🌐✨
         uses: pypa/gh-action-pypi-publish@release/v1
         with:
-          # If using PyPI API token instead of OIDC, uncomment line below:
-          # password: ${{ secrets.PYPI_API_TOKEN }}
           skip-existing: true
